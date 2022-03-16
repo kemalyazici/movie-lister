@@ -14,6 +14,7 @@ function Content() {
     const [text, setText] = useState('');
     const [p, setP] = useState(1);
     const [genres,setGenres] = useState("");
+    const [order, setOrder] = useState("");
 
 
 
@@ -22,13 +23,13 @@ function Content() {
 
         dispatch({type:'SET_LOADING'});
         const getMovieData = async () => {
-            const movieData = await getMovies("",20,p,text,genres)
+            const movieData = await getMovies(order,10,p,text,genres)
             dispatch({type: 'GET_MOVIES', payload: movieData})
             console.log(genres)
         }
         getMovieData()
 
-    }, [dispatch,p,text,genres])
+    }, [dispatch,p,text,genres,order])
 
 
 
@@ -39,18 +40,20 @@ function Content() {
             <SearchBar setText={setText} setPage={setP}/>
 
                         <div>
-                        <div className="grid grid-cols-5 lg:grid-cols-6">
-                            <div className="col-span-1">
-                                <SideBar setGenres={setGenres}/>
+                        <div className="grid grid-cols-6 lg:grid-cols-6 md:grid-cols-2 s:grid-cols-2 xs:grid-cols-2">
+                            <div className="col-span-1 md:col-span-1 xs:col-span-1">
+                                <SideBar setGenres={setGenres} setOrder={setOrder} setPage={setP}/>
                             </div>
-                            {status === 202 ?
+                            {status === 202 ? (
+                                    loading ? <Spinner/> :
                                 <div
-                                    className='grid grid-cols-1 gap-8 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 col-span-5'>
+                                    className='col-span-5 lg:col-span-5 xs:col-span-1 md:col-span-1'>
                                     {
-                                        loading ? <Spinner/> : movies.map(movie => <ContentItem
+                                         movies.map(movie => <ContentItem
                                             key={movie.id} movie={movie}/>)
                                     }
                                 </div>
+                                )
                                 : <div className="text-center m-auto col-span-5">There is no content...</div>
                             }
                         </div>

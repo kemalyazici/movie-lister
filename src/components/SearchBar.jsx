@@ -10,7 +10,7 @@ function SearchBar({setText,setPage}) {
 
     return (
         <div className="top-0 align-top mb-5 content-center text-center">
-            <input type="text" placeholder="Search" onChange={handleChange} className="input input-bordered w-full max-w-xl"/>
+            <input type="text" placeholder="Search" onChange={handleChange} className="input input-bordered w-full max-w-xl mr-5"/>
         </div>
     );
 }

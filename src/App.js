@@ -10,8 +10,8 @@ function App() {
       <MovieProvider>
       <div className="justify-between h-screen">
           <Navbar/>
-          <main className='container mx-auto my-auto px-3 pb-12'>
-          <div className=''>
+          <main className='mx-auto my-auto px-3 pb-12 container'>
+          <div>
               <Content/>
           </div>
 

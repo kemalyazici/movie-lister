@@ -32,7 +32,7 @@ function Pagination({page,totalPage,setPage}) {
 
 
     return totalPage>1 &&(
-        <div className="btn-group mt-10">
+        <div className="btn-group mt-10 mb-10">
 
             {
                 pages.map((pg,key) => {

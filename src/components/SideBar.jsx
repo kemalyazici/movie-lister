@@ -1,7 +1,7 @@
-import {useEffect, useState} from "react";
+import React,{useEffect, useState} from "react";
 
 
-function SideBar({setGenres}) {
+function SideBar({setGenres, setOrder,setPage}) {
 
     const [genArr, setGenArr] = useState([]);
 
@@ -11,7 +11,12 @@ function SideBar({setGenres}) {
         }else{
             setGenArr([...genArr,e.target.value])
         }
+        setPage(1)
 
+    }
+
+    const onChange = (e) => {
+        setOrder(e.target.value)
     }
 
     useEffect(() => {
@@ -19,12 +24,26 @@ function SideBar({setGenres}) {
     },[genArr])
 
 
-
-
-
-
     return (
-                    <ul className="p-5" style={{width:"180px"}}>
+                    <ul className="p-5" style={{width:"160px"}}>
+                        <h1 style={{fontWeight:"bold", fontSize:"25px"}}>Order</h1>
+                        <li>
+                            <div className="form-control w-full max-w-xs">
+                                <label className="label">
+                                    <span className="label-text">Movie List Order</span>
+                                </label>
+                                <select className="select select-bordered" onChange={onChange} defaultValue="id">
+                                    <option value="id">by ID</option>
+                                    <option value="title">by Title</option>
+                                    <option value="year">by Year</option>
+                                    <option value="id_desc">by ID DESC</option>
+                                    <option value="year_desc">by Year DESC</option>
+                                    <option value="title_desc">by Title DESC</option>
+
+                                </select>
+                            </div>
+                        </li>
+                        <li><div className="mb-5"/></li>
                         <h1 style={{fontWeight:"bold", fontSize:"25px"}}>Genres</h1>
                         <li>
                             <div className="form-control">
