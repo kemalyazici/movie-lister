@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 const movieRoot = process.env.REACT_APP_MOVIE_ROOT
 function ContentItem({movie}) {
-    const title = movie.title.replace('&#039;',"'");
+    const title = movie.title.replaceAll('&#039;',"'");
 
     return (
         <div className='card bg-base-200 mb-5' style={{height:"200px"}}>
