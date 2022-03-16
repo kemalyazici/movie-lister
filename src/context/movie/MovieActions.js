@@ -3,10 +3,11 @@ const MOVIE_URL = process.env.REACT_APP_MOVIE_API_URL;
 
 
 
-export const getMovies = async (order="id",limit=40,p=1,q="") => {
+export const getMovies = async (order="id",limit=40,p=1,q="",genres="") => {
     const params = new URLSearchParams({
         order: order,
         limit: limit,
+        genre:genres,
         p: p,
         q:q
     })
